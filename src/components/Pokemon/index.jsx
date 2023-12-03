@@ -26,8 +26,16 @@ const PokemonTypes = {
 export default function Pokemon({ pokemonUrl }) {
   const [pokemon] = usePokemon(pokemonUrl)
 
-  const pokemonType = (type) => {
-    console.log(type)
+  const pokemonTypes = (types) => {
+    if (types.length === 1) {
+      return getColour(types[0].type.name)
+    } else {
+      return `linear-gradient(to top right, ${getColour(types[0].type.name)} 50%, ${getColour(types[1].type.name)} 50%)`
+    }
+  }
+
+  const getColour = (type) => {
+    
     switch (type) {
       case 'normal':
         return PokemonTypes.NORMAL;
@@ -73,7 +81,7 @@ export default function Pokemon({ pokemonUrl }) {
   return (
     <>
       {pokemon && (
-        <div className={styles.container} style={{backgroundColor:pokemonType(pokemon.types[0].type.name)}}>
+        <div className={styles.container} style={{background:pokemonTypes(pokemon.types)}}>
           <h2>{pokemon.name}</h2>
           <img src={pokemon.sprites.front_default} alt={pokemon.name} />
         </div>
