@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import usePokemon from "../../hooks/usePokemon"
 import styles from "./style.module.css"
+import Types from "../Types";
 
 const PokemonTypes = {
   NORMAL: '#A8A77A',
@@ -84,6 +85,7 @@ export default function Pokemon({ pokemonUrl }) {
         <div className={styles.container} style={{background:pokemonTypes(pokemon.types)}}>
           <h2>{pokemon.name}</h2>
           <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+          <Types types={pokemon.types} />
         </div>
       )}
     </>
