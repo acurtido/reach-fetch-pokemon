@@ -84,7 +84,7 @@ export default function Pokemon({ pokemonUrl }) {
       {pokemon && (
         <div className={styles.container} style={{background:pokemonTypes(pokemon.types)}}>
           <h2>{pokemon.name}</h2>
-          <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+          <img src={pokemon.sprites.other["official-artwork"].front_default} alt={pokemon.name} />
           <Types types={pokemon.types} />
         </div>
       )}
